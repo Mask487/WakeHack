@@ -33,10 +33,14 @@ def addEvent(event):
    xml.write('events.xml')
 def removeEvent(event):
    xml = ET.parse('events.xml')
+   root = xml.getroot()
    events = xml.findall('event')
 
    for e in events:
-      #if e.find('date').text == event.getDate() and e.find('time').text == event.getTime() and e.find('desc').text == event.getDescription()
+      if e.find('date').text == event.getDate() and e.find('time').text == event.getTime() and e.find('desc').text == event.getDescription() and e.find('priority').text == event.getPriority() and e.find('rep').text == event.getRepetition():
+         root.remove(e)
+
+   xml.write('events.xml')
 
 def getAllEvents():
    eventList = []

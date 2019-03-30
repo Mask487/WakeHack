@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+#import EventObj
 
 def addEvent(event):
    xml = ET.parse('events.xml')
@@ -35,6 +36,22 @@ def addEvent(event):
 
    xml.write('events.xml')
 
+def getAllEvents():
+   eventList = []
+
+   xml = ET.parse('events.xml')
+
+   events = xml.findall('event')
+
+   for e in events:
+
+      date = e.find('date').text
+      time = e.find('time').text
+      desc = e.find('desc').text
+      priority = e.find('priority').text
+      rep = e.find('rep').text
+
+
 def wipeEvents():
    xml = ET.parse('events.xml')
    root = xml.getroot()
@@ -42,6 +59,9 @@ def wipeEvents():
    root.clear()
 
    xml.write('events.xml')
+
+
+
 
 
 

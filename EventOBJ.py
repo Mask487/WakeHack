@@ -1,15 +1,14 @@
 import datetime as dt
 class Event:
     def __init__(self,date,time,description,priority,repetition):
-        self.date = dt.datetime.strptime(date, "%m %d %Y").date()
+        self.date = date
         self.time = time
         self.description = description
         self.priority = priority
         self.repetition = repetition
-
+        self.tag = 
 
     def getDate(self):
-        self.date = dt.datetime.strftime(self.date, "%m %d %Y")
         return self.date
 
     def getTime(self):
@@ -39,5 +38,7 @@ class Event:
     def setRepetition(self,rep):
         self.repetition = rep
 
+    def getTag(self):
+        return self.tag
 
 

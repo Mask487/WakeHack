@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import EventOBJ
+import random
 
 def addEvent(event):
    xml = ET.parse('events.xml')
@@ -10,6 +11,9 @@ def addEvent(event):
 
    date = ET.Element('date')
    date.text = event.getDate()
+
+   tag = ET.Element('tag')
+   tag.text = generateTag()
 
    time = ET.Element('time')
    time.text = event.getTime()
@@ -31,6 +35,22 @@ def addEvent(event):
    root.append(element)
 
    xml.write('events.xml')
+def generateTag():
+   xml = ET.parse('events.xml')
+   root = xml.getroot()
+   tagInt = random.randint(1000,9999)
+   tagUsed = False
+   for event in root.findall('event'):
+      tag = event.find('tag')
+      if tag.text is not str(tagInt):
+         tagUsed = False
+         continue
+      else:
+         tagUsed = True
+   if tagUsed == False:
+      return tagInt
+   else:
+      generateTag()
 def removeEvent(event):
    xml = ET.parse('events.xml')
    root = xml.getroot()

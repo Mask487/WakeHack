@@ -10,7 +10,7 @@ events = EventHandler.getAllEvents()
 while decision != int(4):
     print(startMessage)
     decision = int(input("Please Enter What You Would Like To Do: "))
-    #os.system('cls')
+    events = EventHandler.getAllEvents()
     if decision == int(1):
         if events.__len__() == 0:
             print("No Events")

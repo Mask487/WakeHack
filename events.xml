@@ -1,0 +1,7 @@
+<event>
+	<date>02/02/02</date>
+	<time>3:30</time>
+	<desc>"do laundry"</desc>
+	<priority>1</priority>
+	<repitition>daily</repitition>
+</event>

@@ -32,6 +32,7 @@ def addEvent(event):
    element.append(desc)
    element.append(priority)
    element.append(rep)
+   element.append(tag)
    root.append(element)
 
    xml.write('events.xml')
@@ -42,15 +43,19 @@ def generateTag():
    tagUsed = False
    for event in root.findall('event'):
       tag = event.find('tag')
-      if tag.text is not str(tagInt):
-         tagUsed = False
+      if tag is None:
          continue
       else:
-         tagUsed = True
+         if tag.text is not str(tagInt):
+            tagUsed = False
+            continue
+         else:
+            tagUsed = True
    if tagUsed == False:
-      return tagInt
+      return str(tagInt)
    else:
       generateTag()
+
 def removeEvent(event):
    xml = ET.parse('events.xml')
    root = xml.getroot()

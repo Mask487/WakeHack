@@ -16,8 +16,9 @@ while decision != int(4):
             print("No Events")
             decision = 0
         else:
+            events = EventHandler.getAllEvents()
             for e in events:
-                print("Event: " + e.getTag())
+                print("Event: " + str(e.getTag()))
                 print("Date: " + e.getDate())
                 print("Time: " + e.getTime())
                 print("Description: " + e.getDescription())

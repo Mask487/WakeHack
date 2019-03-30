@@ -12,7 +12,7 @@ class Event:
         return self.date
 
     def getTag(self):
-        return self.tag
+        return str(self.tag)
 
     def getTime(self):
         return self.time

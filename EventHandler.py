@@ -1,40 +1,42 @@
 import xml.etree.ElementTree as ET
-#import EventObj
+import EventOBJ
 
 def addEvent(event):
    xml = ET.parse('events.xml')
    root = xml.getroot()
 
    attrib = {}
-   ele = root.makeelement('event', attrib)
-   root.append(ele)
+   element = ET.Element('event')
 
-   attrib = {'name' : 'date'}
-   date = root[0][len(root)-1].makeelement('date', attrib)
-   ET.SubElement(root[len(root)-1], 'date', attrib)
-   root[len(root) - 1][0].text = "event.getdate"
+   date = ET.Element('date')
+   date.text = event.getDate()
 
-   attrib = {'name': 'time'}
-   time = root[0][len(root) - 1].makeelement('time', attrib)
-   ET.SubElement(root[len(root) - 1], 'time', attrib)
-   root[len(root) - 1][0].text = "event.gettime"
+   time = ET.Element('time')
+   time.text = event.getTime()
 
-   attrib = {'name': 'desc'}
-   desc = root[0][len(root) - 1].makeelement('desc', attrib)
-   ET.SubElement(root[len(root) - 1], 'desc', attrib)
-   root[len(root) - 1][0].text = "event.getdesc"
+   desc = ET.Element('desc')
+   desc.text = event.getDescription()
 
-   attrib = {'name': 'priority'}
-   priority = root[0][len(root) - 1].makeelement('priority', attrib)
-   ET.SubElement(root[len(root) - 1], 'priority', attrib)
-   root[len(root) - 1][0].text = "event.getpriority"
+   priority = ET.Element('priority')
+   priority.text = event.getPriority()
 
-   attrib = {'name': 'rep'}
-   rep = root[0][len(root) - 1].makeelement('rep', attrib)
-   ET.SubElement(root[len(root) - 1], 'rep', attrib)
-   root[len(root) - 1][0].text = "event.getrep"
+   rep = ET.Element('rep')
+   rep.text = event.getRepetition()
+
+   element.append(date)
+   element.append(time)
+   element.append(desc)
+   element.append(priority)
+   element.append(rep)
+   root.append(element)
 
    xml.write('events.xml')
+def removeEvent(event):
+   xml = ET.parse('events.xml')
+   events = xml.findall('event')
+
+   for e in events:
+      #if e.find('date').text == event.getDate() and e.find('time').text == event.getTime() and e.find('desc').text == event.getDescription()
 
 def getAllEvents():
    eventList = []
@@ -50,6 +52,12 @@ def getAllEvents():
       desc = e.find('desc').text
       priority = e.find('priority').text
       rep = e.find('rep').text
+
+      temp = EventOBJ.Event(date,time,desc,priority,rep)
+
+      eventList.append(temp)
+
+   return eventList
 
 
 def wipeEvents():

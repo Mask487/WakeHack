@@ -1,7 +1,7 @@
 import datetime as dt
 class Event:
     def __init__(self,date,time,description,priority,repetition):
-        self.date = date
+        self.date = dt.datetime.strptime(date, "%m %d %Y").date()
         self.time = time
         self.description = description
         self.priority = priority
@@ -9,7 +9,8 @@ class Event:
 
 
     def getDate(self):
-        return self.date.strftime("%b %d %Y %H:%M:%S")
+        self.date = dt.datetime.strftime(self.date, "%m %d %Y")
+        return self.date
 
     def getTime(self):
         return self.time

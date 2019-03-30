@@ -28,3 +28,6 @@ rep.text = rep1
 data = ET.tostring(events)
 myfile = open("test.xml", 'w')
 myfile.write(data)
+
+print("test")
+

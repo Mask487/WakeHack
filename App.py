@@ -8,21 +8,21 @@ input = 0
 events = EventHandler.getAllEvents()
 
 while int(input) != int(4):
-    print startMessage
+    print(startMessage)
     input = raw_input("Please Enter What You Would Like To Do: ")
     #os.system('cls')
     if int(input) == int(1):
         if events.__len__() == 0:
-            print "No Events"
+            print("No Events")
             input = 0
         else:
             for e in events:
-                print "Event"
-                print "Date: " + e.getDate()
-                print "Time: " + e.getTime()
-                print "Description: " + e.getDescription()
-                print "Priority: " + e.getPriority()
-                print "---------------------------------\n"
+                print("Event")
+                print("Date: " + e.getDate())
+                print("Time: " + e.getTime())
+                print("Description: " + e.getDescription())
+                print("Priority: " + e.getPriority())
+                print("---------------------------------\n")
             input = 0
     elif int(input) == int(2):
         date = raw_input("Please Enter Date(Format M D Y): ")
@@ -35,13 +35,13 @@ while int(input) != int(4):
         events = EventHandler.getAllEvents()
 
         if events.__contains__(event):
-            print "Event Already Exists"
+            print("Event Already Exists")
             input = 0
         else:
             EventHandler.addEvent(event)
             input = 0
     elif int(input) == int(3):
-        print "Please Enter The Following Information Of The Event You Want Removed."
+        print("Please Enter The Following Information Of The Event You Want Removed.")
         date = raw_input("Please Enter Date(Format M D Y): ")
         time = raw_input("Please Enter Time: ")
         desc = raw_input("Please Enter Description: ")
@@ -52,6 +52,6 @@ while int(input) != int(4):
 
         input = 0
     elif int(input) == 4:
-        print "Fuck You Too Then, Bitch"
+        print("Exiting...")
     else:
         input = raw_input("You Dumb Fucker, You Had Once Job. Put In A Damn Number 1-4:")

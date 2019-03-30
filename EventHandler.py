@@ -38,26 +38,26 @@ def removeEvent(event):
    for e in events:
       #if e.find('date').text == event.getDate() and e.find('time').text == event.getTime() and e.find('desc').text == event.getDescription()
 
+
 def getAllEvents():
-   eventList = []
+    eventList = []
 
-   xml = ET.parse('events.xml')
+    xml = ET.parse('events.xml')
 
-   events = xml.findall('event')
+    events = xml.findall('event')
 
-   for e in events:
+    for e in events:
+        date = e.find('date').text
+        time = e.find('time').text
+        desc = e.find('desc').text
+        priority = e.find('priority').text
+        rep = e.find('rep').text
 
-      date = e.find('date').text
-      time = e.find('time').text
-      desc = e.find('desc').text
-      priority = e.find('priority').text
-      rep = e.find('rep').text
+        temp = EventOBJ.Event(date, time, desc, priority, rep)
 
-      temp = EventOBJ.Event(date,time,desc,priority,rep)
+        eventList.append(temp)
 
-      eventList.append(temp)
-
-   return eventList
+    return eventList
 
 
 def wipeEvents():

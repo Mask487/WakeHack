@@ -35,5 +35,15 @@ def addEvent(event):
 
    xml.write('events.xml')
 
+def wipeEvents():
+   xml = ET.parse('events.xml')
+   root = xml.getroot()
+
+   root.clear()
+
+   xml.write('events.xml')
+
+
+
 
 

@@ -56,8 +56,11 @@ def removeEvent(event):
    root = xml.getroot()
    events = xml.findall('event')
 
-   for e in events:
-      if e.find('date').text == event.getDate() and e.find('time').text == event.getTime() and e.find('desc').text == event.getDescription() and e.find('priority').text == event.getPriority() and e.find('rep').text == event.getRepetition():
+   for e in root.findall('event'):
+      tag = e.find('tag')
+      if tag.text is not event:
+         continue
+      else:
          root.remove(e)
 
    xml.write('events.xml')

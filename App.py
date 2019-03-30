@@ -17,7 +17,7 @@ while decision != int(4):
             decision = 0
         else:
             for e in events:
-                print("Event")
+                print("Event: " + e.getTag())
                 print("Date: " + e.getDate())
                 print("Time: " + e.getTime())
                 print("Description: " + e.getDescription())
@@ -41,13 +41,7 @@ while decision != int(4):
             EventHandler.addEvent(event)
             decision = 0
     elif decision == int(3):
-        print("Please Enter The Following Information Of The Event You Want Removed.")
-        date = input("Please Enter Date(Format M D Y): ")
-        time = input("Please Enter Time: ")
-        desc = input("Please Enter Description: ")
-        priority = input("Please Enter Priority: ")
-        rep = input("Please Enter Repetition: ")
-        event = EventOBJ.Event(date, time, desc, priority, rep)
+        event = input("Please Enter The Tag Of The Event You Want Removed: ")
         EventHandler.removeEvent(event)
 
         decision = 0

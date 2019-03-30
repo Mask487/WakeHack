@@ -10,7 +10,7 @@ class Event:
 
     def getDate(self):
         return self.date
-    
+
     def getTag(self):
         return self.tag
 
